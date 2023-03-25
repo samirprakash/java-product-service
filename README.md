@@ -11,5 +11,6 @@ This is a simple product service that allows you to create, read, update and del
 
 ### Getting Started
 
+- Run `make test` to run the tests
 - Run `make build` to build the project
 - Run `make run` to run the project
