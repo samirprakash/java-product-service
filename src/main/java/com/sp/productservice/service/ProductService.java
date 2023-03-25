@@ -1,8 +1,12 @@
 package com.sp.productservice.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import com.sp.productservice.dto.ProductRequest;
+import com.sp.productservice.dto.ProductResponse;
 import com.sp.productservice.model.Product;
 import com.sp.productservice.repository.ProductRepository;
 
@@ -25,5 +29,17 @@ public class ProductService {
 
         productRepository.save(product);
         log.info("Product {} created successfully", product.getId());
+    }
+
+    public List<ProductResponse> getAllProducts() {
+     List<Product> products = productRepository.findAll();
+
+     return products.stream().map(product -> ProductResponse.builder()
+             .id(product.getId())
+             .name(product.getName())
+             .description(product.getDescription())
+             .price(product.getPrice())
+             .build())
+             .collect(Collectors.toList());
     }
 }
