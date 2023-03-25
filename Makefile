@@ -1,3 +1,6 @@
+test:
+	mvn clean test
+	
 build:
 	mvn clean package
 
