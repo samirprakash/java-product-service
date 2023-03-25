@@ -45,7 +45,7 @@ class ProductServiceApplicationTests {
 		ProductRequest productRequest = generateProductRequest();
 		String productRequestAsString = objectMapper.writeValueAsString(productRequest);
 
-		mockMvc.perform(MockMvcRequestBuilders.post("/api/product").contentType(MediaType.APPLICATION_JSON).content(productRequestAsString))
+		mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/product").contentType(MediaType.APPLICATION_JSON).content(productRequestAsString))
 				.andExpect(MockMvcResultMatchers.status().isCreated());
 		Assertions.assertTrue(productRepository.findAll().size() == 1);
 	}
@@ -55,10 +55,10 @@ class ProductServiceApplicationTests {
 		ProductRequest productRequest = generateProductRequest();
 		String productRequestAsString = objectMapper.writeValueAsString(productRequest);
 
-		mockMvc.perform(MockMvcRequestBuilders.post("/api/product").contentType(MediaType.APPLICATION_JSON).content(productRequestAsString))
+		mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/product").contentType(MediaType.APPLICATION_JSON).content(productRequestAsString))
 				.andExpect(MockMvcResultMatchers.status().isCreated());
 
-		mockMvc.perform(MockMvcRequestBuilders.get("/api/product").contentType(MediaType.APPLICATION_JSON))
+		mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/product").contentType(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 
